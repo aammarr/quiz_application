@@ -20,4 +20,9 @@ import { RouterLink, RouterView } from "vue-router";
   font-family: "Rubik";
   src: url("./assets/fonts/Rubik/static/Rubik-Regular.ttf");
 }
+
+.mdc-button {
+  font-family: "Nunito" !important;
+  text-transform: capitalize !important;
+}
 </style>

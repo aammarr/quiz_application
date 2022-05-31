@@ -85,7 +85,8 @@
       </li> -->
     </ul>
     <footer class="realEstate_footer">
-      <button  class="realEstate_btn">Select Property</button>
+      <ui-button :disabled="!selectedProperty" unelevated>Select Property</ui-button>
+      <!-- <button  class="realEstate_btn">Select Property</button> -->
     </footer>
   </section>
 </template>
@@ -94,7 +95,9 @@
 import jsonData from "@/data/data.json";
 export default {
   data() {
-    return {};
+    return {
+      selectedProperty: null,
+    };
   },
   computed: {
     myJson() {
@@ -196,11 +199,11 @@ li {
   align-items: center;
 }
 .realEstate_btn {
-  background: #be1e2d;
+  background-color: #be1e2d !important;
   border-radius: 10px;
   border: none;
   height: 40px;
-  font-family: "Nunito";
+  font-family: "Nunito" !important;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
