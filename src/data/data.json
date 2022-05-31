@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Starter",
+    "price": "$285 per week",
+    "agent": "Pete Agent",
+    "filename": "pete_agent.png"
+  },
+  {
+    "id": 2,
+    "name": "Flex",
+    "price": "$400 per week",
+    "agent": "Pete Agent",
+    "filename": "pete_agent.png"
+  },
+  {
+    "id": 3,
+    "name": "Midtown",
+    "price": "$530 per week",
+    "agent": "Pete Agent",
+    "filename": "pete_agent.png"
+  },
+  {
+    "id": 4,
+    "name": "Prestige",
+    "price": "$680 per week",
+    "agent": "Pete Agent",
+    "filename": "pete_agent.png"
+  },
+  {
+    "id": 5,
+    "name": "Vista",
+    "price": "$950 per week",
+    "agent": "Pete Agent",
+    "filename": "pete_agent.png"
+  }
+]
