@@ -1,39 +1,52 @@
 <template>
-  <section class="realEstate">
-    <header>
-      <img class="estate_logo" src="/src/assets/logos/logo_real-estate.svg" />
-    </header>
-    <ul class="estate_list" style="margin: 0 0 50px 0">
-      <li
-        v-for="properties, index in myJson"
+  <section class="custom-row">
+    <div class="tw-flex tw-flex-column" style="margin: 0 0 60px 0">
+      <header>
+        <img class="custom_logo" src="/src/assets/logos/logo_cars-4-sale.svg" />
+      </header>
+
+      <div
+        class="cards tw-mx-auto"
+        v-for="(cars, index) in myJson"
         :class="{ activeImg: activeIndex === index }"
         @click="setActive(index)"
-        :key="properties.id"
-        class="estate_item"
+        :key="cars.id"
       >
         <div class="estate_image">
-          <img class="activeImg" :src="getImagePath(properties.thumbnail.filename)" />
+          <img
+            class="activeImg"
+            :src="`/src/assets/images/cars/${cars.thumbnail.filename}`"
+          />
         </div>
         <div class="estate_info">
           <div>
-            <h6>{{ properties.name }}</h6>
+            <h6>{{ cars.name }}</h6>
             <img
-              :src="`/src/assets/images/avatars/${properties.options.agent.avatar.filename}`"
+              height="32"
+              :src="
+                cars.options.agent.avatar.filename
+                  ? `/src/assets/images/avatars/${cars.options.agent.avatar.filename}`
+                  : '/src/assets/Image/user_placeholder.png'
+              "
             />
-            <p class="name">{{ properties.options.agent.name }}</p>
+            <p class="name">{{ cars.options.agent.name || "Anonymous" }}</p>
           </div>
           <div>
             <p class="price">
-              ${{ properties.options.price.weekly_value || 0 }} <small>per week</small>
+              ${{ cars.options.price.weekly_value || 0 }} <small>per week</small>
             </p>
           </div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
+
     <footer class="realEstate_footer">
-      <ui-button 
-      @click="$router.push('/car')"
-      :class="{ realEstate_btn: selectedProperty }" :disabled="!selectedProperty" unelevated>Select Property</ui-button>
+      <ui-button
+        :class="{ carSale_btn: selectedCar }"
+        :disabled="!selectedCar"
+        unelevated
+        >Select Car</ui-button
+      >
     </footer>
   </section>
 </template>
@@ -44,14 +57,14 @@ export default {
   data() {
     return {
       activeIndex: null,
-      selectedProperty: null,
+      selectedCar: null,
     };
   },
   methods: {
-    setActive(index) {  
+    setActive(index) {
       this.activeIndex = index;
       // storing selected property.
-      this.selectedProperty = this.myJson[index];
+      this.selectedCar = this.myJson[index];
     },
     getImagePath(name) {
       if (name) return `/src/assets/images/properties/` + name;
@@ -59,7 +72,7 @@ export default {
   },
   computed: {
     myJson() {
-      return jsonData.screens.realEstate.data;
+      return jsonData.screens.carsForSale.data;
     },
   },
 };
@@ -78,15 +91,28 @@ console.log(jsonData);
   top: 0%;
   height: 225vh;
 }
-li {
-  list-style: none;
+
+.custom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #e3f5f5;
 }
-.estate_logo {
+
+.cards {
+  width: 385px;
+  height: 365px;
+  margin: auto;
+}
+
+/* .estate_logo {
   position: relative;
   top: 81px;
   left: 50%;
   transform: translateX(-50%);
-}
+} */
 .estate_list {
   background-color: #f9eded;
   display: flex;
@@ -160,8 +186,8 @@ li {
   justify-content: center;
   align-items: center;
 }
-.realEstate_btn {
-  background-color: #be1e2d !important;
+.carSale_btn {
+  background-color: #6cdada !important;
   border-radius: 10px;
   border: none;
   height: 40px;
