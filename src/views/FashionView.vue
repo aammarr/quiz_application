@@ -56,13 +56,13 @@
         class="cards tw-mx-auto"
         v-for="(maleItems, subIndex) in row.data"
         :key="maleItems.id"
-        :class="{ activeImg: activeIndex === index }"
+        :class="{ activeImg: activeIndex === subIndex }"
         @click="setActive(index, subIndex)"
 
       >
         <div class="estate_image" style="position: relative">
           <img
-          v-if="activeIndex === index" 
+          v-if="activeIndex === subIndex" 
           height="32" width="32" style="object-fit: contain; position: absolute; bottom: -60px;"
           src="/src/assets/icons/icon-circled-arrow.svg" >
           <img
@@ -116,9 +116,11 @@ export default {
   },
   methods: {
     setActive(index, subIndex) {
-      this.activeIndex = index;
+      this.activeIndex = subIndex;
       // storing selected property.
       this.selectedFashion = this.femaleJson[index].data[subIndex];
+
+      console.log('SF', this.selectedFashion);
     },
     getImagePath(name) {
       if (name) return `/src/assets/images/properties/` + name;
