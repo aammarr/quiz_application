@@ -5,3 +5,7 @@
 .custom_logo {
     margin: 20px;
 }
+
+.displayNone {
+    display: none;
+}
